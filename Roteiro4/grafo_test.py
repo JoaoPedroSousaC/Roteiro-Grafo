@@ -69,6 +69,43 @@ class TestGrafo(unittest.TestCase):
         self.g_l5.adicionaAresta('D-C')
         self.g_l5.adicionaAresta('C-C')
 
+        self.g_l6 = Grafo(['D','C', 'A', 'F', 'E', 'H', 'G','B'])
+        self.g_l6.adicionaAresta('D-G')
+        self.g_l6.adicionaAresta('B-G')
+        self.g_l6.adicionaAresta('E-B')
+        self.g_l6.adicionaAresta('C-E')
+        self.g_l6.adicionaAresta('D-A')
+        self.g_l6.adicionaAresta('D-C')
+        self.g_l6.adicionaAresta('D-F')
+        self.g_l6.adicionaAresta('A-C')
+        self.g_l6.adicionaAresta('C-F')
+        self.g_l6.adicionaAresta('E-G')
+        self.g_l6.adicionaAresta('E-H')
+        self.g_l6.adicionaAresta('H-G')
+
+        self.g_l7 = Grafo(['D', 'C', 'A', 'F', 'E', 'H', 'G', 'B'])
+        self.g_l7.adicionaAresta('D-G')
+        self.g_l7.adicionaAresta('B-G')
+        self.g_l7.adicionaAresta('E-B')
+        self.g_l7.adicionaAresta('C-E')
+        self.g_l7.adicionaAresta('D-A')
+        self.g_l7.adicionaAresta('D-C')
+        self.g_l7.adicionaAresta('D-F')
+        self.g_l7.adicionaAresta('A-C')
+        self.g_l7.adicionaAresta('C-F')
+        self.g_l7.adicionaAresta('E-G')
+        self.g_l7.adicionaAresta('E-H')
+        self.g_l7.adicionaAresta('H-G')
+        self.g_l7.adicionaAresta('H-A')
+
+        self.g_l8 = Grafo(['A', 'B', 'C'])
+        self.g_l8.adicionaAresta('A-B')
+        self.g_l8.adicionaAresta('B-C')
+        self.g_l8.adicionaAresta('A-C')
+
+
+
+
     def test_vertices_nao_adjacentes(self):
         self.assertEqual(self.g_p.vertices_nao_adjacentes(), ['J-J', 'J-E', 'J-P', 'J-M', 'J-T', 'J-Z', 'C-C', 'C-Z', 'E-E', 'E-P', 'E-M', 'E-T', 'E-Z', 'P-P', 'P-M', 'P-T', 'P-Z', 'M-M', 'M-Z', 'T-T', 'Z-Z'])
 
