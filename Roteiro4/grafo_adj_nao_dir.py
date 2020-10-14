@@ -333,14 +333,11 @@ class Grafo:
 
     def HaCaminhoEuleriano(self):
         impar = 0
-        '''Inicialmente verifiacamos se o grafo é conexo'''
         if self.conexo() == False:
             return False
-        '''Verificamos quantos vertices impares há no grafo'''
         for x in self.N:
             if self.grau(x) % 2 != 0:
                 impar += 1
-        '''Caso a quantidade de impares seja 0 ou 2, retornamos true pois existe um caminho'''
         if impar == 0 or impar == 2:
             return True
         else:
@@ -348,7 +345,6 @@ class Grafo:
 
     def Impar_Par(self):
         Impares = []
-        '''Verificamos quais são os 2 vertices impares, e retornamos a lista contendo eles'''
         for x in self.N:
             if self.grau(x) % 2 != 0:
                 Impares.append(x)
@@ -356,10 +352,8 @@ class Grafo:
             return False
         return Impares
 
-
     def CountArestas(self):
         cont = 0
-        '''Contamos o numero de arestas existentes no grafo'''
         for j in range(len(self.N)):
             for i in range(len(self.N)):
                 if (j <= i) and (self.M[j][i] > 0):
@@ -367,102 +361,89 @@ class Grafo:
 
         return cont
 
-    def RemoveDaMatriz(self,v,listavertices):
-        '''Removemos de forma o vertice da matriz'''
+    def RemoveDaMatriz(self,v,x):
         listaremove = []
-        for vert in range(len(listavertices)):
-            if listavertices[vert] == v:
+        for vert in range(len(x)):
+            if x[vert] == v:
                 verticev = vert
 
-        for j in range(len(listavertices)):
-            for i in range(len(listavertices)):
+        for j in range(len(x)):
+            for i in range(len(x)):
                 if j == verticev:
                     listaremove.append(self.M[j])
         self.M.remove(listaremove[0])
         for j in range(len(self.N)):
             self.M[j].pop(verticev)
 
-    def Is_Ponte(self,vertice1,vertice2,arestas = []):
-        '''Inicialmente criamos uma copia do grafo, para nela alterarmos'''
+    def Is_Ponte(self,j,i,arestas = []):
+        ''' J e I É INDICE'''
         GrafoCopia = copy.deepcopy(self)
-        '''Adicionamos os pares de vertices na lista de arestas'''
-        arestas.append(GrafoCopia.N[vertice1] + "-" + GrafoCopia.N[vertice2])
-        '''Após isso removemos a aresta da copia do grafo'''
-        GrafoCopia.remove_aresta(GrafoCopia.N[vertice1] + "-" + GrafoCopia.N[vertice2])
-        '''Fazemos uma copia dos vertices do grafo'''
+        arestas.append(GrafoCopia.N[j] + "-" + GrafoCopia.N[i])
+        GrafoCopia.remove_aresta(GrafoCopia.N[j] + "-" + GrafoCopia.N[i])
         Nanterior = copy.deepcopy(GrafoCopia.N)
-
-        '''Caso o grau do vertice seja 0, removemos da matriz'''
-        if GrafoCopia.grau(GrafoCopia.N[vertice1]) == 0:
-            vertice = GrafoCopia.N[vertice1]
-            GrafoCopia.N.pop(vertice1)
+        if GrafoCopia.grau(GrafoCopia.N[j]) == 0:
+            vertice = GrafoCopia.N[j]
+            Nanterior = copy.deepcopy(GrafoCopia.N)
+            GrafoCopia.N.pop(j)
             GrafoCopia.RemoveDaMatriz(vertice,Nanterior)
 
-        '''Verificamos se é a ultima aresta a ser pecorrida'''
-        if GrafoCopia.grau(Nanterior[vertice2]) == 0 and len(arestas) == self.CountArestas():
+
+
+        if GrafoCopia.grau(Nanterior[i]) == 0 and len(arestas) == self.CountArestas():
+
             return False
-        '''Verificamos se o vertice analisado possui grau 0 e não é a ultima aresta, caso seja, é uma ponte'''
-        if GrafoCopia.grau(Nanterior[vertice2]) == 0 and len(arestas) != self.CountArestas():
+        if GrafoCopia.grau(Nanterior[i]) == 0 and len(arestas) != self.CountArestas():
+
+
             return True
-        '''Verificamos se após a remoção da aresta o grafo continua conexo, se sim, a aresta analisada nao é ponte'''
-        if GrafoCopia.grau(Nanterior[vertice2]) != 0 and GrafoCopia.conexo():
+        if GrafoCopia.grau(Nanterior[i]) != 0 and GrafoCopia.conexo():
+
             return False
+
 
         return True
 
-
     def PrintCaminhoEuleriano(self):
-        '''Vimos se no grafo há um caminho euleriano e continuamos a partir daí'''
         if self.HaCaminhoEuleriano():
             Caminho = []
-            '''Criamos uma copia do grafo para fazer alterações'''
             CopiaGrafo = copy.deepcopy(self)
-            '''Atribuimos ao "VerticeRaiz" um vertice, para começarmos a busca a partir dele'''
+
             VerticeRaiz = self.N[0]
 
-            '''Verificamos se há 2 vertices com grau impar, ou todos os vertices são pares'''
             if self.Impar_Par() != False:
                 VerticeRaiz = self.Impar_Par()[0]
 
-            '''Fizemos um for pecorrendo o tamanho da lista de vertices do grafo, transformando o VerticeRaiz em índice'''
             for vert in range(len(CopiaGrafo.N)):
                 if self.N[vert] == VerticeRaiz:
                     VerticeRaiz2 = vert
-
             countAresta = self.CountArestas()
 
-            '''Criamos um while com uma condição de parada: Se a quantidade de arestas do grafo for igual
-               a lista de Caminho, terminamos o programa retornando o Caminho pecorrido'''
             while countAresta != len(Caminho):
                 NanteriorFor = copy.deepcopy(CopiaGrafo.N)
                 contBreak = 0
 
-                '''Transformamos o verticeraiz em índice'''
+
                 for vert in range(len(CopiaGrafo.N)):
                     if CopiaGrafo.N[vert] == VerticeRaiz:
                         VerticeRaiz2 = vert
 
-                '''Pecorremos a matriz com diversas condições'''
+
                 for j in range(len(CopiaGrafo.N)):
                     for i in range(len(CopiaGrafo.N)):
                         if j == VerticeRaiz2:
-                            '''Verificamos se há uma aresta entre os vertices analisados'''
                             if (CopiaGrafo.M[j][i]!='-') and (CopiaGrafo.M[j][i]>0):
-                                '''verificamos se a aresta analisada não é uma ponte, então removemos da matriz'''
                                 if CopiaGrafo.Is_Ponte(j,i,Caminho) == False:
+                                    # Caminho.append(CopiaGrafo.N[j] + '-' + CopiaGrafo.N[i])
                                     CopiaGrafo.remove_aresta(CopiaGrafo.N[j] + '-' + CopiaGrafo.N[i])
-                                    '''Se o grau do vertice da aresta removida for 0, removemos o vertice da matriz'''
                                     if CopiaGrafo.grau(CopiaGrafo.N[j]) == 0:
+
                                         CopiaGrafo.N.pop(j)
                                         CopiaGrafo.RemoveDaMatriz(NanteriorFor[j],NanteriorFor)
                                     contBreak += 1
-                                    '''Atualizamos o Vertice Raiz'''
                                     VerticeRaiz = NanteriorFor[i]
                                     break
 
                                 else:
-                                    '''Se for ponte e for o ultimo caminho damos um Break, se não for o ultimo
-                                    removemos a aresta do caminho'''
                                     if (CopiaGrafo.grau(NanteriorFor[i])==1):
                                         break
                                     Caminho.pop(-1)
@@ -472,6 +453,9 @@ class Grafo:
                             if (CopiaGrafo.M[j][i]!='-') and (CopiaGrafo.M[j][i]>0):
                                 resultado = CopiaGrafo.Is_Ponte(i,j,Caminho)
                                 if  resultado == False:
+
+
+                                    # Caminho.append(CopiaGrafo.N[i] + '-' + CopiaGrafo.N[j])
                                     CopiaGrafo.remove_aresta(CopiaGrafo.N[j] + '-' + CopiaGrafo.N[i])
                                     if CopiaGrafo.grau(CopiaGrafo.N[i]) == 0:
                                         CopiaGrafo.N.pop(i)
@@ -479,92 +463,38 @@ class Grafo:
                                     contBreak += 1
                                     VerticeRaiz = NanteriorFor[j]
                                     break
+
                                 else:
+
+
                                     if (CopiaGrafo.grau(NanteriorFor[j])==1):
                                         break
                                     Caminho.pop(-1)
                                     break
+
+
+
                     if contBreak >= 1:
                         break
 
+
+
+
+
+
             return Caminho
-        else:
-            return "Não possui caminho euleriano"
-
-    def VerticeLigados(self,vertice):
-        '''Fizemos uma função verificando quais vertices são adjacentes ao vertice passado como parâmetro, e retornamos
-        uma lista com eles'''
-        verticesLigados = []
-        for j in range(len(self.N)):
-            for i in range(len(self.N)):
-               if j <= i and (self.N[j] == vertice or self.N[i] == vertice) and self.M[j][i] > 0:
-                   if self.N[j] == vertice:
-                        verticesLigados.append(self.N[i])
-                   else:
-                        verticesLigados.append(self.N[j])
-
-        return verticesLigados
 
 
 
-    def Caminho_Hamiltoniano(self,size, vertice, lista=[]):
-        '''Se o vertice passado como parâmetro não estiver na lista, nós adicionamos'''
-        if vertice not in set(lista):
-            lista.append(vertice)
-            '''Se o tamanho da lista for igual a quantidade de vertices, retornamos a lista'''
-            if len(lista) == size:
-                return lista
-            TodosCaminhos = []
-            '''Pecorremos os vertices adjacentes ao vertice passado como parâmetro'''
-            for prox_vertice in self.VerticeLigados(vertice):
-                res_lista = list(lista)
-                caminhos = self.Caminho_Hamiltoniano(size,prox_vertice,res_lista)
-
-                '''Se o caminho não for vazio, adicionamos o caminho em uma lista'''
-                if caminhos is not None:
-                    TodosCaminhos.extend(caminhos)
-                else:
-                    pass
-            return TodosCaminhos
-        else:
-            return None
-
-    def Ciclo_Hamiltoniano(self):
-        Vertice = self.N[0]
-        '''Adicionamos o resultado do "Caminho_Hamiltoniano" em um lista'''
-        Lista =  self.Caminho_Hamiltoniano(len(self.N),Vertice)
-        CaminhosOrganizado = []
-        '''Em seguida organizamos o resultado da lista '''
-        for j in range(len(self.N)):
-            while j * len(self.N) < len(Lista):
-                start = int(j * len(self.N))
-                end = int((j + 1) * len(self.N))
-                CaminhosOrganizado.append(Lista[start:end])
-                break
-        '''Verificamos se o primeiro vertice é adjacente ao ultimo, dos caminhos da lista'''
-        for Caminhos in CaminhosOrganizado:
-            if Vertice in self.VerticeLigados(Caminhos[-1]):
-                return Caminhos
-
-            else:
-                return  False
-        return False
 
 
-g_l7 = Grafo(['D', 'C', 'A', 'F', 'E', 'H', 'G', 'B'])
-g_l7.adicionaAresta('D-G')
-g_l7.adicionaAresta('B-G')
-g_l7.adicionaAresta('E-B')
-g_l7.adicionaAresta('C-E')
-g_l7.adicionaAresta('D-A')
-g_l7.adicionaAresta('D-C')
-g_l7.adicionaAresta('D-F')
-g_l7.adicionaAresta('A-C')
-g_l7.adicionaAresta('C-F')
-g_l7.adicionaAresta('E-G')
-g_l7.adicionaAresta('E-H')
-g_l7.adicionaAresta('H-G')
-g_l7.adicionaAresta('H-A')
+
+
+
+
+
+
+
 
 
 
