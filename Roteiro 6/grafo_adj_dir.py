@@ -216,7 +216,7 @@ class Grafo:
                     for k in range(len(self.N)):
                         '''Modificamos a copia criando uma matriz de alcançabilidade'''
                         Copia.M[j][k] = max(Copia.M[j][k],Copia.M[i][k])
-        return Copia
+        return Copia.M
 
 
 
@@ -247,10 +247,6 @@ class Grafo:
             grafo_str += '\n'
 
         return grafo_str
-g_p = Grafo([], [])
-for i in ['A', 'B', 'C', 'D']:
-    g_p.adiciona_vertice(i)
-for i in ['A-B', 'A-D', 'D-C', 'B-C', 'D-A']:
-    g_p.adiciona_aresta(i)
 
-print(g_p.Warshall()    )
+
+

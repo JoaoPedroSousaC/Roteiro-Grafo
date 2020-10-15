@@ -58,6 +58,34 @@ class TestGrafo(unittest.TestCase):
         for i in ['D-C', 'C-C']:
             self.g_l5.adiciona_aresta(i)
 
+        self.g_l6 = Grafo([], [])
+        for i in ['A', 'B', 'C', 'D']:
+            self.g_l6.adiciona_vertice(i)
+        for i in ['A-B', 'A-D', 'D-C', 'B-C', 'D-A']:
+            self.g_l6.adiciona_aresta(i)
+        self.g_l7 = Grafo([], [])
+        for i in ['A', 'B', 'C']:
+            self.g_l7.adiciona_vertice(i)
+        for i in ['A-B', 'B-C', 'C-A', 'C-A']:
+            self.g_l7.adiciona_aresta(i)
+
+        self.g_l8 = Grafo([], [])
+        for i in ['A', 'B', 'C', 'D']:
+            self.g_l8.adiciona_vertice(i)
+        for i in ['A-B', 'B-C', 'C-A', 'C-A', 'A-D', 'C-D']:
+            self.g_l8.adiciona_aresta(i)
+
+        self.g_l9 = Grafo([], [])
+        for i in ['A', 'B', 'C', 'D']:
+            self.g_l9.adiciona_vertice(i)
+        for i in ['A-B', 'B-C', 'C-A', 'C-A', 'A-D', 'C-D', 'D-B']:
+            self.g_l9.adiciona_aresta(i)
+        self.g_l10 = Grafo([], [])
+        for i in ['A', 'B', 'C', 'D']:
+            self.g_l10.adiciona_vertice(i)
+        for i in ['A-B', 'C-A', 'C-A', 'A-D', 'C-D', 'D-B']:
+            self.g_l10.adiciona_aresta(i)
+
     def test_vertices_nao_adjacentes(self):
         self.assertEqual(set(self.g_p.vertices_nao_adjacentes()), set(['J-J', 'J-E', 'J-P', 'J-M', 'J-T', 'J-Z',
                                                                       'C-J', 'C-C', 'C-Z',
@@ -123,3 +151,20 @@ class TestGrafo(unittest.TestCase):
         self.assertFalse(self.g_l3.eh_completo())
         self.assertTrue(self.g_l4.eh_completo())
         self.assertFalse(self.g_l5.eh_completo())
+
+    def test_Warshall(self):
+
+        self.assertEqual((self.g_p.Warshall()), [[0, 1, 2, 2, 1, 1, 1], [0, 0, 2, 2, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual((self.g_p_sem_paralelas.Warshall()), [[0, 1, 1, 1, 1, 1, 1], [0, 0, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 1], [0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual((self.g_c.Warshall()), [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]])
+        self.assertEqual((self.g_c3.Warshall()), [[0]])
+        self.assertEqual((self.g_l1.Warshall()), [[2, 0, 0, 0], [2, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual((self.g_l2.Warshall()), [[1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+        self.assertEqual((self.g_l3.Warshall()), [[0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 1, 0], [0, 0, 0, 1]])
+        self.assertEqual((self.g_l4.Warshall()), [[1]])
+        self.assertEqual((self.g_l5.Warshall()), [[1, 0], [1, 0]])
+        self.assertEqual( (self.g_l6.Warshall()), [[1, 1, 1, 1], [0, 0, 1, 0], [0, 0, 0, 0], [1, 1, 1, 1]])
+        self.assertEqual((self.g_l7.Warshall()), [[2, 1, 1], [2, 1, 1], [2, 1, 1]])
+        self.assertEqual((self.g_l8.Warshall()),[[2, 1, 1, 1], [2, 1, 1, 1], [2, 1, 1, 1], [0, 0, 0, 0]])
+        self.assertEqual((self.g_l9.Warshall()), [[2, 1, 1, 1], [2, 1, 1, 1], [2, 1, 1, 1], [2, 1, 1, 1]])
+        self.assertEqual((self.g_l10.Warshall()), [[0, 1, 0, 1], [0, 0, 0, 0], [2, 1, 0, 1], [0, 1, 0, 0]])

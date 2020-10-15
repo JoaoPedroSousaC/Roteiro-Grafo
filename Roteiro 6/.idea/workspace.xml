@@ -40,7 +40,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Unittests for grafo_adj_test.TestGrafo.test_Warshall">
     <configuration name="grafo_adj_dir" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Roteiro 6" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,8 +63,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for grafo_adj_test.TestGrafo.test_Warshall" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Roteiro 6" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="C:\Users\gamer\PycharmProjects\pythonProject\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_pattern" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;grafo_adj_test.TestGrafo.test_Warshall&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.grafo_adj_dir" />
+      <item itemvalue="Python tests.Unittests for grafo_adj_test.TestGrafo.test_Warshall" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for grafo_adj_test.TestGrafo.test_Warshall" />
         <item itemvalue="Python.grafo_adj_dir" />
       </list>
     </recent_temporary>
@@ -77,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602724934771</updated>
-      <workItem from="1602724935910" duration="1477000" />
+      <workItem from="1602724935910" duration="3076000" />
     </task>
     <servers />
   </component>
@@ -96,42 +117,42 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="137" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602725393581">
+    <state x="137" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602726770847">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state x="137" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.736@0.0.1366.736" timestamp="1602725393581" />
-    <state width="1323" height="207" key="GridCell.Tab.0.bottom" timestamp="1602725950164">
+    <state x="137" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.736@0.0.1366.736" timestamp="1602726770847" />
+    <state width="1323" height="207" key="GridCell.Tab.0.bottom" timestamp="1602728000927">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.bottom/0.0.1366.736@0.0.1366.736" timestamp="1602725950164" />
-    <state width="1323" height="207" key="GridCell.Tab.0.center" timestamp="1602725950164">
+    <state width="1323" height="207" key="GridCell.Tab.0.bottom/0.0.1366.736@0.0.1366.736" timestamp="1602728000927" />
+    <state width="1323" height="207" key="GridCell.Tab.0.center" timestamp="1602728000927">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.center/0.0.1366.736@0.0.1366.736" timestamp="1602725950164" />
-    <state width="1323" height="207" key="GridCell.Tab.0.left" timestamp="1602725950164">
+    <state width="1323" height="207" key="GridCell.Tab.0.center/0.0.1366.736@0.0.1366.736" timestamp="1602728000927" />
+    <state width="1323" height="207" key="GridCell.Tab.0.left" timestamp="1602728000927">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.left/0.0.1366.736@0.0.1366.736" timestamp="1602725950164" />
-    <state width="1323" height="207" key="GridCell.Tab.0.right" timestamp="1602725950164">
+    <state width="1323" height="207" key="GridCell.Tab.0.left/0.0.1366.736@0.0.1366.736" timestamp="1602728000927" />
+    <state width="1323" height="207" key="GridCell.Tab.0.right" timestamp="1602728000927">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.right/0.0.1366.736@0.0.1366.736" timestamp="1602725950164" />
-    <state width="1323" height="226" key="GridCell.Tab.1.bottom" timestamp="1602725913261">
+    <state width="1323" height="207" key="GridCell.Tab.0.right/0.0.1366.736@0.0.1366.736" timestamp="1602728000927" />
+    <state width="1323" height="226" key="GridCell.Tab.1.bottom" timestamp="1602727961700">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="226" key="GridCell.Tab.1.bottom/0.0.1366.736@0.0.1366.736" timestamp="1602725913261" />
-    <state width="1323" height="226" key="GridCell.Tab.1.center" timestamp="1602725913260">
+    <state width="1323" height="226" key="GridCell.Tab.1.bottom/0.0.1366.736@0.0.1366.736" timestamp="1602727961700" />
+    <state width="1323" height="226" key="GridCell.Tab.1.center" timestamp="1602727961700">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="226" key="GridCell.Tab.1.center/0.0.1366.736@0.0.1366.736" timestamp="1602725913260" />
-    <state width="1323" height="226" key="GridCell.Tab.1.left" timestamp="1602725913260">
+    <state width="1323" height="226" key="GridCell.Tab.1.center/0.0.1366.736@0.0.1366.736" timestamp="1602727961700" />
+    <state width="1323" height="226" key="GridCell.Tab.1.left" timestamp="1602727961700">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="226" key="GridCell.Tab.1.left/0.0.1366.736@0.0.1366.736" timestamp="1602725913260" />
-    <state width="1323" height="226" key="GridCell.Tab.1.right" timestamp="1602725913260">
+    <state width="1323" height="226" key="GridCell.Tab.1.left/0.0.1366.736@0.0.1366.736" timestamp="1602727961700" />
+    <state width="1323" height="226" key="GridCell.Tab.1.right" timestamp="1602727961700">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state width="1323" height="226" key="GridCell.Tab.1.right/0.0.1366.736@0.0.1366.736" timestamp="1602725913260" />
+    <state width="1323" height="226" key="GridCell.Tab.1.right/0.0.1366.736@0.0.1366.736" timestamp="1602727961700" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,6 +181,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Roteiro_6$grafo_adj_dir.coverage" NAME="grafo_adj_dir Coverage Results" MODIFIED="1602725928252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Roteiro_6$grafo_adj_dir.coverage" NAME="grafo_adj_dir Coverage Results" MODIFIED="1602727961671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Roteiro_6$Unittests_for_grafo_adj_test_TestGrafo_test_Warshall.coverage" NAME="Unittests for grafo_adj_test.TestGrafo.test_Warshall Coverage Results" MODIFIED="1602727993110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
