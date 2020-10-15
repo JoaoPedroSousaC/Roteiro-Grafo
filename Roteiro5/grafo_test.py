@@ -108,9 +108,9 @@ class TestGrafo(unittest.TestCase):
         self.g_z.adicionaAresta('E-C')
         self.g_z.adicionaAresta('E-P')
         self.g_z.adicionaAresta('G-P')
+        self.g_z.adicionaAresta('A-G')
         self.g_z.adicionaAresta('A-B')
-        self.g_z.adicionaAresta('A-A')
-        self.g_z.adicionaAresta('B-B')
+        self.g_z.adicionaAresta('B-J')
 
         self.g_z1 = Grafo(['J', 'U', 'V', 'I', 'T', 'O', 'R', 'E', 'P', 'B', 'L', 'C', 'A'])
         self.g_z1.adicionaAresta('J-A')
@@ -129,7 +129,7 @@ class TestGrafo(unittest.TestCase):
         self.g_z2.adicionaAresta('B-E')
 
         self.g_z3 = Grafo(['I', 'F'])
-        self.g_z3.adicionaAresta('I-I')
+        self.g_z3.adicionaAresta('I-F')
         self.g_z3.adicionaAresta('F-F')
 
         self.g_z4 = Grafo(
@@ -164,6 +164,7 @@ class TestGrafo(unittest.TestCase):
         self.g_z6.adicionaAresta('A-F')
         self.g_z6.adicionaAresta('F-O')
         self.g_z6.adicionaAresta('O-S')
+        self.g_z6.adicionaAresta('G-S')
 
         self.g_z7 = Grafo(['G'])
         self.g_z7.adicionaAresta('G-G')
@@ -188,9 +189,9 @@ class TestGrafo(unittest.TestCase):
         self.g_z9.adicionaAresta('O-F')
         self.g_z9.adicionaAresta('O-S')
         self.g_z9.adicionaAresta('N-S')
-        self.g_z9.adicionaAresta('N-D')
         self.g_z9.adicionaAresta('I-D')
-        self.g_z9.adicionaAresta('I-E')
+        self.g_z9.adicionaAresta('C-E')
+        self.g_z9.adicionaAresta('G-C')
 
         self.g_z10 = Grafo(['M', 'O', 'S', 'C', 'A'])
         self.g_z10.adicionaAresta('M-O')
@@ -215,7 +216,6 @@ class TestGrafo(unittest.TestCase):
 
 
 
-
     def test_CicloHamiltoniano(self):
         self.assertFalse(self.g_p.Ciclo_Hamiltoniano())
         self.assertFalse(self.g_p_sem_paralelas.Ciclo_Hamiltoniano())
@@ -224,11 +224,22 @@ class TestGrafo(unittest.TestCase):
         self.assertFalse(self.g_l1.Ciclo_Hamiltoniano())
         self.assertFalse(self.g_l2.Ciclo_Hamiltoniano())
         self.assertFalse(self.g_l3.Ciclo_Hamiltoniano())
-        self.assertEqual(set(self.g_l4.Ciclo_Hamiltoniano()),set( ['D']))
-        self.assertEqual(set(self.g_l5.Ciclo_Hamiltoniano()),set( ['C', 'D']))
+        self.assertEqual(set(self.g_l4.Ciclo_Hamiltoniano()),set(['D']))
+        self.assertEqual(set(self.g_l5.Ciclo_Hamiltoniano()),set(['C', 'D']))
         self.assertFalse(self.g_l6.Ciclo_Hamiltoniano())
-        self.assertEqual(set(self.g_l7.Ciclo_Hamiltoniano()),set( ['D', 'A', 'H', 'G', 'B', 'E', 'C', 'F']))
+        self.assertEqual(set(self.g_l7.Ciclo_Hamiltoniano()),set(['D', 'A', 'H', 'G', 'B', 'E', 'C', 'F']))
         self.assertEqual(set(self.g_l8.Ciclo_Hamiltoniano()),set(['A', 'B', 'C'] ))
+        self.assertEqual(set(self.g_z.Ciclo_Hamiltoniano()),set(['J', 'C', 'E', 'P', 'G', 'A', 'B']))
+        self.assertFalse(self.g_z2.Ciclo_Hamiltoniano())
+        self.assertEqual(set(self.g_z3.Ciclo_Hamiltoniano()), set(['I', 'F']))
+        self.assertFalse(self.g_z4.Ciclo_Hamiltoniano())
+        self.assertFalse(self.g_z5.Ciclo_Hamiltoniano())
+        self.assertEqual(set(self.g_z6.Ciclo_Hamiltoniano()), set(['G', 'R', 'A', 'F', 'O', 'S']))
+        self.assertEqual(set(self.g_z7.Ciclo_Hamiltoniano()), set(['G']))
+        self.assertEqual(set(self.g_z8.Ciclo_Hamiltoniano()), set(['G', 'R', 'A', 'F', 'O', 'S', 'N', 'D', 'I', 'E', 'C']))
+        self.assertFalse(self.g_z9.Ciclo_Hamiltoniano())
+        self.assertFalse(self.g_z10.Ciclo_Hamiltoniano())
+        self.assertFalse(self.g_z11.Ciclo_Hamiltoniano())
 
     def test_PrintCaminhoEuleriano(self):
         self.assertEqual(set(self.g_p.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
@@ -243,15 +254,17 @@ class TestGrafo(unittest.TestCase):
         self.assertEqual(set(self.g_l6.PrintCaminhoEuleriano()),set(['D-C', 'C-A', 'A-D', 'D-F', 'F-C', 'C-E', 'E-H', 'H-G', 'G-D', 'G-E', 'E-B', 'B-G']))
         self.assertEqual(set(self.g_l7.PrintCaminhoEuleriano()),set(['A-D', 'D-C', 'C-A', 'A-H', 'H-E', 'E-C', 'C-F', 'F-D', 'D-G', 'G-E', 'E-B', 'B-G', 'G-H']))
         self.assertEqual(set(self.g_l8.PrintCaminhoEuleriano()),set(['A-B', 'B-C', 'C-A']))
-        self.assertEqual(set(self.g_z.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
+        self.assertEqual(set(self.g_z.PrintCaminhoEuleriano()),set(['J-C', 'C-E', 'E-P', 'P-G', 'G-A', 'A-B', 'B-J']))
         self.assertEqual(set(self.g_z1.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z2.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z3.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z4.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z5.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
-        self.assertEqual(set(self.g_z6.PrintCaminhoEuleriano()),set(['G-R', 'R-A', 'A-F', 'F-O', 'O-S']))
+        self.assertEqual(set(self.g_z6.PrintCaminhoEuleriano()),set(['G-R', 'R-A', 'A-F', 'F-O', 'O-S', 'S-G']))
         self.assertEqual(set(self.g_z7.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z8.PrintCaminhoEuleriano()),set(['G-R', 'R-A', 'A-F', 'F-O', 'O-S', 'S-N', 'N-D', 'D-I', 'I-E', 'E-C', 'C-G']))
         self.assertEqual(set(self.g_z9.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z10.PrintCaminhoEuleriano()),set('Não possui caminho euleriano'))
         self.assertEqual(set(self.g_z11.PrintCaminhoEuleriano()),set(['D-E', 'E-S', 'S-L', 'L-U', 'U-M', 'M-O', 'O-V', 'V-I', 'I-T', 'T-A', 'A-R', 'R-B']))
+
+
