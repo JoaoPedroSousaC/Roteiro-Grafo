@@ -412,6 +412,8 @@ class Grafo:
 
 
     def PrintCaminhoEuleriano(self):
+        if len(self.N) <= 1:
+            return "Não possui caminho euleriano"
         '''Vimos se no grafo há um caminho euleriano e continuamos a partir daí'''
         if self.HaCaminhoEuleriano():
             Caminho = []
@@ -507,7 +509,9 @@ class Grafo:
 
 
 
-    def Caminho_Hamiltoniano(self,size, vertice, lista=[]):
+    def Caminho_Hamiltoniano(self,size, vertice, lista=None):
+        if lista is None:
+            lista = []
         '''Se o vertice passado como parâmetro não estiver na lista, nós adicionamos'''
         if vertice not in set(lista):
             lista.append(vertice)
@@ -551,20 +555,132 @@ class Grafo:
         return False
 
 
-g_l7 = Grafo(['D', 'C', 'A', 'F', 'E', 'H', 'G', 'B'])
-g_l7.adicionaAresta('D-G')
-g_l7.adicionaAresta('B-G')
-g_l7.adicionaAresta('E-B')
-g_l7.adicionaAresta('C-E')
-g_l7.adicionaAresta('D-A')
-g_l7.adicionaAresta('D-C')
-g_l7.adicionaAresta('D-F')
-g_l7.adicionaAresta('A-C')
-g_l7.adicionaAresta('C-F')
-g_l7.adicionaAresta('E-G')
-g_l7.adicionaAresta('E-H')
-g_l7.adicionaAresta('H-G')
-g_l7.adicionaAresta('H-A')
+
+g_z = Grafo(['J', 'C', 'E', 'P', 'G', 'A', 'B'])
+g_z.adicionaAresta('J-C')
+g_z.adicionaAresta('E-C')
+g_z.adicionaAresta('E-P')
+g_z.adicionaAresta('G-P')
+g_z.adicionaAresta('A-B')
+g_z.adicionaAresta('A-A')
+g_z.adicionaAresta('B-B')
+
+
+g_z1 = Grafo(['J', 'U', 'V', 'I', 'T', 'O', 'R', 'E', 'P', 'B', 'L', 'C', 'A'])
+g_z1.adicionaAresta('J-A')
+g_z1.adicionaAresta('U-C')
+g_z1.adicionaAresta('L-V')
+g_z1.adicionaAresta('I-B')
+g_z1.adicionaAresta('P-O')
+g_z1.adicionaAresta('R-E')
+g_z1.adicionaAresta('J-U')
+g_z1.adicionaAresta('E-P')
+g_z1.adicionaAresta('A-C')
+
+g_z2 = Grafo(['I', 'F', 'P', 'B', 'E', 'D', 'U'])
+g_z2.adicionaAresta('I-F')
+g_z2.adicionaAresta('D-U')
+g_z2.adicionaAresta('B-E')
+
+
+g_z3 = Grafo(['I', 'F'])
+g_z3.adicionaAresta('I-I')
+g_z3.adicionaAresta('F-F')
+
+g_z4 = Grafo(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+g_z4.adicionaAresta('A-B')
+g_z4.adicionaAresta('B-C')
+g_z4.adicionaAresta('C-D')
+g_z4.adicionaAresta('D-E')
+g_z4.adicionaAresta('F-E')
+g_z4.adicionaAresta('G-H')
+g_z4.adicionaAresta('I-J')
+g_z4.adicionaAresta('J-K')
+g_z4.adicionaAresta('K-L')
+g_z4.adicionaAresta('L-M')
+g_z4.adicionaAresta('N-M')
+g_z4.adicionaAresta('P-Q')
+g_z4.adicionaAresta('Z-A')
+g_z4.adicionaAresta('O-P')
+g_z4.adicionaAresta('T-S')
+
+g_z5 = Grafo(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+g_z5.adicionaAresta('A-A')
+g_z5.adicionaAresta('B-A')
+g_z5.adicionaAresta('B-B')
+g_z5.adicionaAresta('A-G')
+g_z5.adicionaAresta('F-E')
+
+
+g_z6 = Grafo(['G', 'R', 'A', 'F', 'O', 'S'])
+g_z6.adicionaAresta('G-R')
+g_z6.adicionaAresta('R-A')
+g_z6.adicionaAresta('A-F')
+g_z6.adicionaAresta('F-O')
+g_z6.adicionaAresta('O-S')
+
+g_z7= Grafo(['G'])
+g_z7.adicionaAresta('G-G')
+
+g_z8 = Grafo(['G', 'R', 'A', 'F', 'O', 'S','N', 'D', 'I', 'E', 'C'])
+g_z8.adicionaAresta('G-R')
+g_z8.adicionaAresta('A-R')
+g_z8.adicionaAresta('A-F')
+g_z8.adicionaAresta('O-F')
+g_z8.adicionaAresta('O-S')
+g_z8.adicionaAresta('N-S')
+g_z8.adicionaAresta('N-D')
+g_z8.adicionaAresta('I-D')
+g_z8.adicionaAresta('I-E')
+g_z8.adicionaAresta('E-C')
+g_z8.adicionaAresta('G-C')
+
+g_z9 = Grafo(['G', 'R', 'A', 'F', 'O', 'S','N', 'D', 'I', 'E', 'C'])
+g_z9.adicionaAresta('G-R')
+g_z9.adicionaAresta('A-R')
+g_z9.adicionaAresta('A-F')
+g_z9.adicionaAresta('O-F')
+g_z9.adicionaAresta('O-S')
+g_z9.adicionaAresta('N-S')
+g_z9.adicionaAresta('N-D')
+g_z9.adicionaAresta('I-D')
+g_z9.adicionaAresta('I-E')
+
+g_z10 = Grafo(['M', 'O', 'S', 'C', 'A'])
+g_z10.adicionaAresta('M-O')
+g_z10.adicionaAresta('M-A')
+g_z10.adicionaAresta('S-C')
+g_z10.adicionaAresta('A-O')
+g_z10.adicionaAresta('C-C')
+
+
+g_z11 = Grafo(['D', 'E', 'S', 'L', 'U', 'M','B', 'R', 'A', 'T', 'I','V','O'])
+g_z11.adicionaAresta('D-E')
+g_z11.adicionaAresta('V-O')
+g_z11.adicionaAresta('S-L')
+g_z11.adicionaAresta('T-I')
+g_z11.adicionaAresta('M-U')
+g_z11.adicionaAresta('A-R')
+g_z11.adicionaAresta('B-R')
+g_z11.adicionaAresta('M-O')
+g_z11.adicionaAresta('E-S')
+g_z11.adicionaAresta('L-U')
+g_z11.adicionaAresta('I-V')
+g_z11.adicionaAresta('T-A')
+
+print(g_z.PrintCaminhoEuleriano())
+print(g_z1.PrintCaminhoEuleriano())
+print(g_z2.PrintCaminhoEuleriano())
+print(g_z3.PrintCaminhoEuleriano())
+print(g_z4.PrintCaminhoEuleriano())
+print(g_z5.PrintCaminhoEuleriano())
+print(g_z6.PrintCaminhoEuleriano())
+print(g_z7.PrintCaminhoEuleriano())
+print(g_z8.PrintCaminhoEuleriano())
+print(g_z9.PrintCaminhoEuleriano())
+print(g_z10.PrintCaminhoEuleriano())
+print(g_z11.PrintCaminhoEuleriano())
+
 
 
 
