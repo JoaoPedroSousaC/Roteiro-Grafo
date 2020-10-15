@@ -38,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Roteiro5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Roteiro 6" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager" selected="Python.grafo_test">
@@ -163,7 +163,7 @@
       <workItem from="1602722788963" duration="400000" />
       <workItem from="1602723206038" duration="528000" />
       <workItem from="1602723916092" duration="17000" />
-      <workItem from="1602724209670" duration="514000" />
+      <workItem from="1602724725434" duration="209000" />
     </task>
     <servers />
   </component>
@@ -187,10 +187,10 @@
       <screen x="0" y="0" width="1366" height="736" />
     </state>
     <state x="137" y="22" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.736@0.0.1366.736" timestamp="1602723654213" />
-    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1602724720995">
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1602724933526">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.736@0.0.1366.736" timestamp="1602724720995" />
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.736@0.0.1366.736" timestamp="1602724933526" />
     <state width="1323" height="302" key="GridCell.Tab.0.bottom" timestamp="1602723932837">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
