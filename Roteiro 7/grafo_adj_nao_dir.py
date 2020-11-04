@@ -555,16 +555,17 @@ class Grafo:
                 return  False
         return False
 
-
+    '''---------------------------------------------Roteiro-7--------------------------------------------------------------'''
     def Algoritmo_de_Dijkstra(self,verticePartida, verticeChegada, cargaIncial, cargaTotal, verticesRecarga = []):
+        '''Fizemos o algoritmo padrao de Dijkstra e adicionamos um novo dicionario 'gama', nele contem a quantidade
+         de carga em cada vertice. '''
         beta = {}
         fi = {}
         pi = {}
         gama = {}
         w = verticePartida
         PonteiroR = ''
-
-
+        '''Fizemos um 'for' para poder preencher cada dicionario com seus respectivos valores'''
         for x in self.N:
             gama.update({x: 0})
             pi.update({x:0})
@@ -582,18 +583,22 @@ class Grafo:
 
 
             for verticeLigado in self.VerticeLigados(w):
+                '''Esse primeiro 'if' é do algoritimo padrao...'''
                 if (fi[verticeLigado] == 0 and (beta[verticeLigado]>beta[w] + 1)):
                     beta[verticeLigado] = beta[w] + 1
                     pi[verticeLigado] = w
-
+                '''Nesses dois 'if' eu uso a logica que encontrei para o problema, verificamos se o proximos vertice 
+                ligado ao vertice 'W' ele tem uma carga maior que o vertice 'W' e seu 'fi' é igual a zero, caso ele tenha,
+                 alteramos  o seu 'pi' para 'W' e alteramos o seu valor de 'gama' para o 'gama' de 'w' - 1 '''
                 if fi[verticeLigado] == 0 and gama[verticeLigado] < gama[w] - 1:
                     pi[verticeLigado] = w
                     gama[verticeLigado] = gama[w] - 1
+                '''Logo em seguida verificamos se o vertice ligado ao 'w' é um vertice de recarga.'''
                 if verticeLigado in verticesRecarga:
                     gama[verticeLigado] = cargaTotal
 
 
-
+            '''Na minha logica, alterei como achar o 'R*', o 'R*' é a maior entre os 'gama' e que tem o 'fi' igual a zero'''
             maximo = 0
             PonteiroR = ''
 
@@ -615,77 +620,82 @@ class Grafo:
         return self.printDijkstra(pi,verticeChegada)
 
     def printDijkstra(self,pi,verticeChegada):
+        '''Fizemos um for onde vai pegando os antecessores e colocando em ordem'''
         lista = []
         lista.append(verticeChegada)
+
         for x in range(len(pi)):
+            lista.append('->')
             lista.append(pi[verticeChegada])
+
             verticeChegada = pi[verticeChegada]
             if pi[verticeChegada] == 0:
 
                 break
-        return lista[::-1]
+        a = ' '.join(lista[::-1])
+        return a
 
 
 
 
 
 
-g_p_sem_paralelas = Grafo(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+g_z12 = Grafo(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
              'V', 'W', 'X', 'Y', 'Z','A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1'])
-g_p_sem_paralelas.adicionaAresta('A-B')
-g_p_sem_paralelas.adicionaAresta('A-C')
-g_p_sem_paralelas.adicionaAresta('A-D')
-g_p_sem_paralelas.adicionaAresta('B-E')
-g_p_sem_paralelas.adicionaAresta('B-I')
-g_p_sem_paralelas.adicionaAresta('B-F')
-g_p_sem_paralelas.adicionaAresta('C-G')
-g_p_sem_paralelas.adicionaAresta('C-D')
-g_p_sem_paralelas.adicionaAresta('D-H')
-g_p_sem_paralelas.adicionaAresta('E-F')
-g_p_sem_paralelas.adicionaAresta('F-J')
-g_p_sem_paralelas.adicionaAresta('F-G')
-g_p_sem_paralelas.adicionaAresta('H-L')
-g_p_sem_paralelas.adicionaAresta('H-G')
-g_p_sem_paralelas.adicionaAresta('I-M')
-g_p_sem_paralelas.adicionaAresta('I-J')
-g_p_sem_paralelas.adicionaAresta('J-N')
-g_p_sem_paralelas.adicionaAresta('K-O')
-g_p_sem_paralelas.adicionaAresta('L-P')
-g_p_sem_paralelas.adicionaAresta('M-Q')
-g_p_sem_paralelas.adicionaAresta('M-S')
-g_p_sem_paralelas.adicionaAresta('N-R')
-g_p_sem_paralelas.adicionaAresta('N-S')
-g_p_sem_paralelas.adicionaAresta('N-T')
-g_p_sem_paralelas.adicionaAresta('O-S')
-g_p_sem_paralelas.adicionaAresta('P-T')
-g_p_sem_paralelas.adicionaAresta('Q-U')
-g_p_sem_paralelas.adicionaAresta('Q-R')
-g_p_sem_paralelas.adicionaAresta('R-V')
-g_p_sem_paralelas.adicionaAresta('R-S')
-g_p_sem_paralelas.adicionaAresta('S-W')
-g_p_sem_paralelas.adicionaAresta('S-X')
-g_p_sem_paralelas.adicionaAresta('S-T')
-g_p_sem_paralelas.adicionaAresta('U-C1')
-g_p_sem_paralelas.adicionaAresta('U-Y')
-g_p_sem_paralelas.adicionaAresta('V-Y')
-g_p_sem_paralelas.adicionaAresta('V-Z')
-g_p_sem_paralelas.adicionaAresta('V-W')
-g_p_sem_paralelas.adicionaAresta('W-A1')
-g_p_sem_paralelas.adicionaAresta('X-A1')
-g_p_sem_paralelas.adicionaAresta('X-B1')
-g_p_sem_paralelas.adicionaAresta('A1-E1')
-g_p_sem_paralelas.adicionaAresta('E1-D1')
-g_p_sem_paralelas.adicionaAresta('D1-C1')
-g_p_sem_paralelas.adicionaAresta('E1-F1')
-g_p_sem_paralelas.adicionaAresta('F1-G1')
-g_p_sem_paralelas.adicionaAresta('G1-E1')
+g_z12.adicionaAresta('A-B')
+g_z12.adicionaAresta('A-C')
+g_z12.adicionaAresta('A-D')
+g_z12.adicionaAresta('B-E')
+g_z12.adicionaAresta('B-I')
+g_z12.adicionaAresta('B-F')
+g_z12.adicionaAresta('C-G')
+g_z12.adicionaAresta('C-D')
+g_z12.adicionaAresta('D-H')
+g_z12.adicionaAresta('E-F')
+g_z12.adicionaAresta('F-J')
+g_z12.adicionaAresta('F-G')
+g_z12.adicionaAresta('H-L')
+g_z12.adicionaAresta('H-G')
+g_z12.adicionaAresta('I-M')
+g_z12.adicionaAresta('I-J')
+g_z12.adicionaAresta('J-N')
+g_z12.adicionaAresta('K-O')
+g_z12.adicionaAresta('L-P')
+g_z12.adicionaAresta('M-Q')
+g_z12.adicionaAresta('M-S')
+g_z12.adicionaAresta('N-R')
+g_z12.adicionaAresta('N-S')
+g_z12.adicionaAresta('N-T')
+g_z12.adicionaAresta('O-S')
+g_z12.adicionaAresta('P-T')
+g_z12.adicionaAresta('Q-U')
+g_z12.adicionaAresta('Q-R')
+g_z12.adicionaAresta('R-V')
+g_z12.adicionaAresta('R-S')
+g_z12.adicionaAresta('S-W')
+g_z12.adicionaAresta('S-X')
+g_z12.adicionaAresta('S-T')
+g_z12.adicionaAresta('U-C1')
+g_z12.adicionaAresta('U-Y')
+g_z12.adicionaAresta('V-Y')
+g_z12.adicionaAresta('V-Z')
+g_z12.adicionaAresta('V-W')
+g_z12.adicionaAresta('W-A1')
+g_z12.adicionaAresta('X-A1')
+g_z12.adicionaAresta('X-B1')
+g_z12.adicionaAresta('A1-E1')
+g_z12.adicionaAresta('E1-D1')
+g_z12.adicionaAresta('D1-C1')
+g_z12.adicionaAresta('E1-F1')
+g_z12.adicionaAresta('F1-G1')
+g_z12.adicionaAresta('G1-E1')
+g_z12.adicionaAresta('A-F1')
+g_z12.adicionaAresta('G1-F1')
 
 
 
 
-LISTA = ['L','S','U','D1']
-
-print(g_p_sem_paralelas.Algoritmo_de_Dijkstra('A','G1',3,3,LISTA))
+print(g_z12.Algoritmo_de_Dijkstra('A','G1',2,3,['L','S','U','D1']))
 
 
 
